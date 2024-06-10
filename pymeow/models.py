@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import List
 
 
 @dataclass(frozen=True)
@@ -53,4 +54,4 @@ class Breed:
 @dataclass(frozen=True)
 class Cat:
     image_info: CatPic
-    breed_info: Breed
+    breed_info: List[Breed]
