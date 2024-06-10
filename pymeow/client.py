@@ -32,7 +32,7 @@ class Client:
         args = locals().copy()
         del args['self']
         if (args['limit'] > 10 or args['has_breeds']) and not self.api_key:
-            raise EmptyTokenException("You must have an API key to get more than 10 images."
+            raise EmptyTokenException("You must have an API key to get more than 10 images or use params."
                                       "To get an API key, go to https://thecatapi.com/signup")
         url = self.uri + "images/search"
         response = self._request(url=url, method="GET", params=args, headers=self._get_headers())
