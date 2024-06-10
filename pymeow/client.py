@@ -1,6 +1,8 @@
 import requests
 from requests.models import Response
-from meowpicapi.exceptions import EmptyTokenException, RequestException
+from pymeow.exceptions import EmptyTokenException, RequestException
+from pymeow.models import Breed, Cat
+from pymeow.utils import convert_json_to_obj, convert_breed_info
 from typing import List, Dict
 
 
@@ -13,7 +15,7 @@ class Client:
         self.api_key = api_key
 
     def get_cat(self, limit: int = 1, page: int = 0, order: str = "RAND", has_breeds: bool = False,
-                breed_ids: str = None,  sub_id: str = None) -> List[dict]:
+                breed_ids: str = None,  sub_id: str = None) -> List[Cat]:
         """
         A function that retrieves cat images url with id and sizes based on the specified parameters.
         Parameters available only if you have an API key
@@ -37,11 +39,12 @@ class Client:
         url = self.uri + "images/search"
         response = self._request(url=url, method="GET", params=args, headers=self._get_headers())
         if response.status_code == 200:
-            return response.json()
+            r_json = response.json()
+            return convert_json_to_obj(r_json)
         else:
             raise RequestException(response.status_code, response.text)
 
-    def get_breed_info(self, breed: str) -> List[dict]:
+    def get_breed_info(self, breed: str) -> Breed:
         """
         A function that retrieves information about a specific breed.
 
@@ -54,9 +57,10 @@ class Client:
         url = self.uri + f"breeds/search?q={breed}"
         response = self._request(url=url, method="GET", headers=self._get_headers())
         if response.status_code == 200:
-            return response.json()
+            r_json = response.json()
+            return convert_breed_info(r_json)
 
-    def get_all_breeds(self) -> List[dict]:
+    def get_all_breeds(self) -> List[Breed]:
         """
         A function that retrieves information about all breeds by sending a GET request to the specified URI.
         Returns:
@@ -65,7 +69,8 @@ class Client:
         url = self.uri + "breeds"
         response = self._request(url=url, method="GET", headers=self._get_headers())
         if response.status_code == 200:
-            return response.json()
+            r_json = response.json()
+            return convert_breed_info(r_json)
 
     def _get_headers(self) -> Dict:
         headers = {}
