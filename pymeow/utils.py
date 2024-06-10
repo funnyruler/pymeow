@@ -1,8 +1,8 @@
 from pymeow.models import CatPic, Breed, Cat
-from typing import List
+from typing import List, Union
 
 
-def convert_breed_info(breeds: List[dict]) -> List[Breed]:
+def convert_breed_info(breeds: List[dict]) -> Union[List[Breed], Breed]:
     """
     A function that converts a list of dictionaries to a list of Breed objects.
 
@@ -12,6 +12,9 @@ def convert_breed_info(breeds: List[dict]) -> List[Breed]:
     Returns:
         List[Breed]: A list of Breed objects containing information about the breed.
     """
+    if len(breeds) == 1:
+        breed_info = {field: breeds[0].get(field, None) for field in Breed.__annotations__}
+        return Breed(**breed_info)
     breed_list = []
     for breed in breeds:
         breed_info = {field: breed.get(field, None) for field in Breed.__annotations__}
@@ -33,7 +36,7 @@ def convert_pic_info(pic_info: dict) -> CatPic:
     return CatPic(**pic_info)
 
 
-def convert_json_to_obj(json_data: dict) -> List[CatPic]:
+def convert_json_to_obj(json_data: dict) -> List[Cat]:
     """
     A function that converts a dictionary to a list of CatPic objects.
 
