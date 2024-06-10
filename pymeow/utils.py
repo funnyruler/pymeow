@@ -50,9 +50,9 @@ def convert_json_to_obj(json_data: dict) -> List[Cat]:
     for i in json_data:
         if 'breeds' in i:
             breed_info = convert_breed_info(i['breeds'])
+            del i['breeds']
         else:
             breed_info = None
-        del i['breeds']
         pic_info = convert_pic_info(i)
         result_list.append(Cat(breed_info=breed_info, image_info=pic_info))
     return result_list
