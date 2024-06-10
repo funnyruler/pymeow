@@ -1,0 +1,19 @@
+[project]
+name = "PyMeow"
+version = "1.0.0"
+authors = [
+  { name="funnyruler", email="funnyruler7@gmail.com" },
+]
+description = "A simple python wrapper for using API of https://thecatapi.com/"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/funnyruler/pymeow"
+Issues = "https://github.com/funnyruler/pymeow/issues"
+Examples = "https://github.com/funnyruler/pymeow/tree/main/examples"
