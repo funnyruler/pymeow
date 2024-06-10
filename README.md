@@ -13,11 +13,11 @@ I recommend to [sign up](https://thecatapi.com/#pricing) and get API key, its fr
 
 ## Development
 `pymeow` is being actively developed, and new API changes should arrive on `pymeow` very quickly. `pymeow` uses `requests` and `dataclasses` as models for its methods.
-In future i will add `async` version of this wrapper.
+In the future, I will add `async` version of this wrapper.
 
 
 ## Installation
-
+[PyPi page](https://pypi.org/project/PyMeow/)
 `pymeow` requires python 3.7 or higher. This module can be installed by pip:
 ```
 pip install pymeow
