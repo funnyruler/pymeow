@@ -36,7 +36,7 @@ def convert_pic_info(pic_info: dict) -> CatPic:
     return CatPic(**pic_info)
 
 
-def convert_json_to_obj(json_data: dict) -> List[Cat]:
+def convert_json_to_obj(json_data: dict) -> Union[List[Cat], Cat]:
     """
     A function that converts a dictionary to a list of CatPic objects.
 
@@ -46,6 +46,15 @@ def convert_json_to_obj(json_data: dict) -> List[Cat]:
     Returns:
         List[CatPic]: A list of CatPic objects containing information about the cat images.
     """
+    if len(json_data) == 1:
+        json_data = json_data[0]
+        if 'breeds' in json_data:
+            breed_info = convert_breed_info(json_data['breeds'])
+            del json_data['breeds']
+        else:
+            breed_info = None
+        pic_info = convert_pic_info(json_data)
+        return Cat(breed_info=breed_info, image_info=pic_info)
     result_list = []
     for i in json_data:
         if 'breeds' in i:
