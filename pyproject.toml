@@ -1,6 +1,6 @@
 [project]
 name = "PyMeow"
-version = "1.0.0"
+version = "1.0.1"
 authors = [
   { name="funnyruler", email="funnyruler7@gmail.com" },
 ]
