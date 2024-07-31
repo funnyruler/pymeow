@@ -5,7 +5,7 @@ The simple way to get cats 🐱
 This is a simple python wrapper for using API of https://thecatapi.com/.
 By this module you can get images of cats🐱 or information of their breeds.
 You can see examples in the [examples folder](https://github.com/funnyruler/pymeow/tree/main/examples).
-All entities are represented as dataclasses.
+All entities are represented as pydantic models.
 API have more than 60k images, breeds and facts about cats.
 I recommend to [sign up](https://thecatapi.com/#pricing) and get API key, its free and this removes most of the restrictions and limits.
 
