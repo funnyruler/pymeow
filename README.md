@@ -18,7 +18,7 @@ In the future, I will add `async` version of this wrapper.
 
 ## Installation
 [PyPi page](https://pypi.org/project/PyMeow/)
-`pymeow` requires python 3.7 or higher. This module can be installed by pip:
+`pymeow` requires python 3.9 or higher. This module can be installed by pip:
 ```
 pip install pymeow
 ```
