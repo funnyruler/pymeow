@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List, Optional, Union
+from typing import Optional, Union
 
 
 class CatPic(BaseModel):
@@ -51,7 +51,7 @@ class Breed(BaseModel):
 
 class Cat(BaseModel):
     image_info: CatPic
-    breed_info: Union[List[Breed], Breed] = None
+    breed_info: Union[list[Breed], Breed] = None
 
 
 class UserVote(BaseModel):
