@@ -7,6 +7,11 @@ class CatPic(BaseModel):
     url: Optional[str] = None
     width: Optional[int] = None
     height: Optional[int] = None
+    breeds: Optional[list] = None
+    sub_id: Optional[str] = None
+    created_at: Optional[str] = None
+    original_filename: Optional[str] = None
+    breed_ids: Optional[str] = None
 
 
 class Breed(BaseModel):
